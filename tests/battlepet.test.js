@@ -9,7 +9,7 @@ test('battlePetAbility', function(t) {
   t.test('should build correct url and response', function(t) {
     armory.battlePetAbility(options, function(err, body, res) {
       t.notOk(err, 'no error returned')
-      t.equal(res.req.path, '/wow/battlePet/ability/222', 'built api url')
+      t.similar(res.req.path, new RegExp('/wow/battlePet/ability/222\\?apikey='), 'built api url')
       t.equal(res.statusCode, 200, 'returned 200')
       t.type(body, 'object', 'returned an object')
       t.end()
@@ -30,7 +30,7 @@ test('battlePetSpecies', function(t) {
   t.test('should build correct url and response', function(t) {
     armory.battlePetSpecies(options, function(err, body, res) {
       t.notOk(err, 'no error returned')
-      t.equal(res.req.path, '/api/wow/battlePet/species/444', 'built api url')
+      t.similar(res.req.path, new RegExp('/wow/battlePet/species/444\\?apikey='), 'built api url')
       t.equal(res.statusCode, 200, 'returned 200')
       t.type(body, 'object', 'returned an object')
       t.end()
@@ -58,9 +58,9 @@ test('battlePetStats', function(t) {
     armory.battlePetStats(options, function(err, body, res) {
       t.notOk(err, 'no error returned')
 
-      t.equal(
+      t.similar(
         res.req.path
-      , '/api/wow/battlePet/stats/258?breedId=5&level=25&qualityId=4'
+      , new RegExp('/wow/battlePet/stats/258\\?breedId=5&level=25&qualityId=4&apikey=')
       , 'built api url'
       )
 

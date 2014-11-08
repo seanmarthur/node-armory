@@ -10,6 +10,7 @@ armory._get = function(path, options, callback) {
   options.headers = options.headers || {}
   options.jar = false
   options.json = true
+  options.gzip = true
 
   path = encodeURI('/wow' + path)
 
@@ -18,10 +19,11 @@ armory._get = function(path, options, callback) {
 
   if (process.env.http_proxy) { options.strictSSL = false }
 
-  if (process.env.wowPrivateKey && process.env.wowPublicKey) {
-    this.auth.privateKey = process.env.wowPrivateKey;
+  if (process.env.wowPublicKey) {
     this.auth.publicKey = process.env.wowPublicKey;
   }
+
+  if (this.auth.publicKey) { options._query['apikey'] = this.auth.publicKey }
 
   options.uri = url.format({
     protocol: 'https:'
@@ -31,16 +33,16 @@ armory._get = function(path, options, callback) {
   })
 
   // Authentication
-  if (this.auth.privateKey && this.auth.publicKey) {
-    var signature = crypto.createHmac('sha1', this.auth.privateKey)
-      , date = new Date().toUTCString()
-
-    signature.update(['GET', date, path].join('\n') + '\n')
-
-    options.headers['Date'] = date
-    options.headers['Authorization'] = 'BNET ' + this.auth.publicKey + ':' +
-      signature.digest('base64')
-  }
+  // if (this.auth.privateKey && this.auth.publicKey) {
+  //   var signature = crypto.createHmac('sha1', this.auth.privateKey)
+  //     , date = new Date().toUTCString()
+  //
+  //   signature.update(['GET', date, path].join('\n') + '\n')
+  //
+  //   options.headers['Date'] = date
+  //   options.headers['Authorization'] = 'BNET ' + this.auth.publicKey + ':' +
+  //     signature.digest('base64')
+  // }
 
   if (callback) {
     var cb = function(err, res, body) {

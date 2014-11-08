@@ -160,15 +160,16 @@ Note: `id` and `name` are not used by these methods.
 
 ***
 ### Properties
-#### auth.publicKey, auth.privateKey
-Keys to use for generating an authorization header.
+#### auth.publicKey
+Key to use as the BattleNet API key.
 
     var armory = require('armory')
 
     armory.auth.publicKey = 'foo'
-    armory.auth.privateKey = 'bar'
 
     armory.realmStatus(function() { ... })
+
+Alternatively, set this environment variable - wowPublicKey.
 
 ### Notes on usage:
 

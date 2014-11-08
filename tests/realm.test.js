@@ -10,9 +10,9 @@ test('realmStatus', function(t) {
     armory.realmStatus(options, function(err, body, res) {
       t.notOk(err, 'no error returned')
 
-      t.equal(
+      t.similar(
         res.req.path
-      , '/wow/realm/status?realm=shadowmoon'
+      , new RegExp('/wow/realm/status\\?realm=shadowmoon&apikey=')
       , 'built api url'
       )
 

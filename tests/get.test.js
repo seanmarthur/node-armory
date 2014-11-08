@@ -12,7 +12,7 @@ test('_get', function(t) {
     t.type(res, IncomingMessage, 'full response passed as third parameter')
 
     t.equal(res.req.getHeader('Host'), 'us.api.battle.net', 'built battle.net url')
-    t.equal(res.req.path, '/wow/realm/status?locale=en_US', 'built api path')
+    t.similar(res.req.path, new RegExp('/wow/realm/status\\?locale=en_US&apikey='), 'built api path')
 
     t.end()
   })
@@ -40,14 +40,15 @@ test('should return Stream if no callback is passed', function(t) {
   t.end()
 })
 
-test('auth', function(t) {
-  armory.auth.privateKey = armory.auth.publicKey = 'test'
-
-  armory._get('/realm/status', options, function(err, body, res) {
-    var time = new Date(res.req.getHeader('Date')).getTime()
-    t.notOk(Number.isNaN(time), 'valid date header set')
-
-    t.similar(res.req.getHeader('Authorization'), /BNET test:/, 'header set')
-    t.end()
-  })
-})
+// Auth is now mandatory and done via a query param - so tested in all other tests
+// test('auth', function(t) {
+//   armory.auth.privateKey = armory.auth.publicKey = 'test'
+//
+//   armory._get('/realm/status', options, function(err, body, res) {
+//     var time = new Date(res.req.getHeader('Date')).getTime()
+//     t.notOk(Number.isNaN(time), 'valid date header set')
+//
+//     t.similar(res.req.getHeader('Authorization'), /BNET test:/, 'header set')
+//     t.end()
+//   })
+// })
