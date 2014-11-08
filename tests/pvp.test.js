@@ -17,7 +17,7 @@ test('arena', function(t) {
 
       t.equal(
         res.req.path
-      , '/api/wow/arena/shadowmoon/5v5/Staker%20cheated%20on%20his%20GF'
+      , '/wow/arena/shadowmoon/5v5/Staker%20cheated%20on%20his%20GF'
       , 'built api url'
       )
 
@@ -51,7 +51,7 @@ test('arenaLadder', function(t) {
 
       t.equal(
         res.req.path
-      , '/api/wow/pvp/arena/vindication/2v2?asc=false&page=2&size=10'
+      , '/wow/pvp/arena/vindication/2v2?asc=false&page=2&size=10'
       , 'built api url'
       )
 
@@ -83,7 +83,7 @@ test('rbgLadder', function(t) {
 
       t.equal(
         res.req.path
-      , '/api/wow/pvp/ratedbg/ladder?asc=false&page=2&size=10'
+      , '/wow/pvp/ratedbg/ladder?asc=false&page=2&size=10'
       , 'built api url'
       )
 

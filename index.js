@@ -11,14 +11,21 @@ armory._get = function(path, options, callback) {
   options.jar = false
   options.json = true
 
-  path = encodeURI('/api/wow' + path)
+  path = encodeURI('/wow' + path)
 
   if (options.locale) { options._query.locale = options.locale }
   if (!options.region) { throw new Error('region must be provided') }
 
+  if (process.env.http_proxy) { options.strictSSL = false }
+
+  if (process.env.wowPrivateKey && process.env.wowPublicKey) {
+    this.auth.privateKey = process.env.wowPrivateKey;
+    this.auth.publicKey = process.env.wowPublicKey;
+  }
+
   options.uri = url.format({
-    protocol: 'http:'
-  , hostname: options.region + '.battle.net'
+    protocol: 'https:'
+  , hostname: options.region + '.api.battle.net'
   , pathname: path
   , query: options._query
   })

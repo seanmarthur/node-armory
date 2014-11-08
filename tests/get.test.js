@@ -11,8 +11,8 @@ test('_get', function(t) {
     t.type(body, 'object', 'body was parsed from JSON')
     t.type(res, IncomingMessage, 'full response passed as third parameter')
 
-    t.equal(res.req.getHeader('Host'), 'us.battle.net', 'built battle.net url')
-    t.equal(res.req.path, '/api/wow/realm/status?locale=en_US', 'built api path')
+    t.equal(res.req.getHeader('Host'), 'us.api.battle.net', 'built battle.net url')
+    t.equal(res.req.path, '/wow/realm/status?locale=en_US', 'built api path')
 
     t.end()
   })

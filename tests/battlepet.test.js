@@ -9,7 +9,7 @@ test('battlePetAbility', function(t) {
   t.test('should build correct url and response', function(t) {
     armory.battlePetAbility(options, function(err, body, res) {
       t.notOk(err, 'no error returned')
-      t.equal(res.req.path, '/api/wow/battlePet/ability/222', 'built api url')
+      t.equal(res.req.path, '/wow/battlePet/ability/222', 'built api url')
       t.equal(res.statusCode, 200, 'returned 200')
       t.type(body, 'object', 'returned an object')
       t.end()

@@ -12,7 +12,7 @@ test('realmStatus', function(t) {
 
       t.equal(
         res.req.path
-      , '/api/wow/realm/status?realm=shadowmoon'
+      , '/wow/realm/status?realm=shadowmoon'
       , 'built api url'
       )
 
