@@ -1,5 +1,7 @@
 # node-armory
 
+[![Build Status via Travis CI](https://travis-ci.org/kimptoc/node-armory.png?branch=master)](https://travis-ci.org/kimptoc/node-armory)
+
 A simple [node.js](http://github.com/joyent/node) wrapper around Blizzard's [REST API for World of Warcraft](http://blizzard.github.com/api-wow-docs/).
 
 ## Installation
