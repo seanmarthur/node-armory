@@ -108,6 +108,27 @@ test('item', function(t) {
   })
 })
 
+test('item with context', function(t) {
+  var options = { id: 112826, context: 'raid-finder', region: 'us' }
+
+  t.test('should build correct url and response', function(t) {
+    armory.item(options, function(err, body, res) {
+      t.notOk(err, 'no error returned')
+      t.similar(res.req.path, new RegExp('/wow/item/112826/raid-finder\\?apikey='), 'built api url')
+      t.equal(res.statusCode, 200, 'returned 200')
+      t.type(body, 'object', 'returned an object')
+      t.end()
+    })
+  })
+
+  t.test('should return a Stream if no callback is passed', function(t) {
+    var res = armory.item(options)
+
+    t.type(res, Stream)
+    t.end()
+  })
+})
+
 test('itemSet', function(t) {
   var options = { id: 650, region: 'us' }
 

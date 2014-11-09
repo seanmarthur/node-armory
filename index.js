@@ -173,6 +173,8 @@ require('./methods').forEach(function(definition) {
       , path = '/' + definition.url + id
       , cb
 
+    if (options.context)  {path += '/' + options.context;}
+
     if (definition.trailingSlash) { path += '/' }
 
     if (callback && definition.key) {
