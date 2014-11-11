@@ -2,6 +2,7 @@
 
 [ ![Codeship Status for kimptoc/node-armory](https://codeship.com/projects/58b52f80-4c01-0132-07f3-1241e8965acd/status)](https://codeship.com/projects/46922)
 
+
 [![Build Status via Travis CI](https://travis-ci.org/kimptoc/node-armory.png?branch=master)](https://travis-ci.org/kimptoc/node-armory)
 
 A simple [node.js](http://github.com/joyent/node) wrapper around Blizzard's [REST API for World of Warcraft](http://blizzard.github.com/api-wow-docs/).
