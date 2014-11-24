@@ -48,7 +48,7 @@ armory._get = function(path, options, callback) {
     var cb = function(err, res, body) {
       if (body && body.status === 'nok') {
         err = err || new Error(body.reason)
-      } else if (res.statusCode != 200 && res.statusCode != 304) {
+      } else if (res && res.statusCode && res.statusCode != 200 && res.statusCode != 304) {
         err = err || new Error(body)
       }
 
