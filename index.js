@@ -164,7 +164,7 @@ armory.realmStatus = function(options, callback) {
     var path = '/' + [method, options.realm, options.id].join('/')
     return this._get(path, options, callback)
   }
-})
+});
 
 // Definitions for generic functions.
 require('./methods').forEach(function(definition) {

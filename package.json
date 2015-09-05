@@ -2,12 +2,12 @@
 , "version": "0.6.2"
 , "description": "A wrapper for the WoW Armory API."
 , "keywords": ["wow", "warcraft", "armory", "api", "blizzard", "mmo", "gaming"]
-, "bugs": { "url": "https://github.com/xtian/node-armory/issues" }
-, "author": "Christian Wesselhoeft <hi@xtian.us>"
+, "bugs": { "url": "https://github.com/seanmarthur/node-armory/issues" }
+, "author": "Sean Arthur"
 , "main": "index.js"
 , "repository":
   { "type": "git"
-  , "url": "https://github.com/xtian/node-armory.git"
+  , "url": "https://github.com/seanmarthur/node-armory.git"
   }
 , "dependencies": { "request": "~2" }
 , "devDependencies":
@@ -17,4 +17,5 @@
 , "scripts": { "test": "make test" }
 , "license": "MIT"
 , "engines": ["node >= 0.4.0"]
+, "private": true
 }
